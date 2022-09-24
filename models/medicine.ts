@@ -12,7 +12,10 @@ const medicineSchema = new Schema({
     user_id: String,
     frequency: Number,
 
-    intake: [intakeItemSchema]
+
+    intake: [intakeItemSchema],
+    // OR
+    last_intake: Date,
 })
 
 const Medicine = model('Medicine', medicineSchema)

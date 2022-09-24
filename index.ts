@@ -1,7 +1,8 @@
 import Express from 'express'
 import dotenv from 'dotenv'
+import cors from 'cors'
 import db from './db'
-import medicine from './routes/medicines'
+import medicines from './routes/medicines'
 
 dotenv.config()
 
@@ -15,8 +16,10 @@ db.connect()
 
 const app = Express()
 
+app.use(cors())
+app.use(Express.json())
 
-app.use('/medicines', medicine)
+app.use('/medicines', medicines)
 
 app.listen(EXPRESS_PORT, () => {
     console.log(`[Express] Listening on port ${EXPRESS_PORT}`)

@@ -3,13 +3,15 @@ import { Request, Response, NextFunction} from 'express'
 
 
 export const create_medicine = async (req: Request, res: Response, next: NextFunction) => {
-    const properties = req.body
+    const { user } = res.locals
+    const properties = { ...req.body, user_id: user._id}
     const newMedicine = await Medicine.create(properties)
     console.log(`Medicine ${newMedicine._id} created`)
     res.send(newMedicine)
 }
 
 export const read_medicines = async (req: Request, res: Response, next: NextFunction) => {
+    const { user } = res.locals
     const medicines = await Medicine.find({})
     console.log(`Medicines queried`)
     res.send(medicines)

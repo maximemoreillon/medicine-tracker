@@ -18,9 +18,6 @@ const app = Express()
 
 app.use(cors())
 app.use(Express.json())
-
-
-
 app.use(routes)
 
 app.listen(EXPRESS_PORT, () => {

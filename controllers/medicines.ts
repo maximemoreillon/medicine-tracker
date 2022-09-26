@@ -12,7 +12,7 @@ export const create_medicine = async (req: Request, res: Response, next: NextFun
 
 export const read_medicines = async (req: Request, res: Response, next: NextFunction) => {
     const { user } = res.locals
-    const medicines = await Medicine.find({})
+    const medicines = await Medicine.find({user_id: user._id})
     console.log(`Medicines queried`)
     res.send(medicines)
 }
